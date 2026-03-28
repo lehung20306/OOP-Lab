@@ -1,3 +1,12 @@
 {
-    "java.debug.settings.onBuildFailureProceed": true
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.project.sourcePaths": [
+        "6.6",
+        "6.4",
+        "6.3",
+        "6.2",
+        "6.1",
+        "2.2.5",
+        "2.2.6"
+    ]
 }
