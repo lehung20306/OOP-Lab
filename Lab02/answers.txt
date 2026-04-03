@@ -1,0 +1,15 @@
+Section 7:
+Based on the AIMS project requirements, there is no use case that requires changing the attributes of a DVD after it has been added to the system. 
+Therefore, to ensure Data Integrity and follow the principle of Encapsulation, we eliminate all setters. 
+All getters are necessary because the system needs to display the DVD's information when the user views the cart or searches for items
+
+Section 8:
+No, Java does not allow this. 
+Reason: In Java, method overloading (including constructors) is distinguished by the parameter list (number, type, and order of parameters). 
+Since both title and category are of type String, both constructors would have the same signature: DigitalVideoDisc(String). 
+This leads to a compile-time error because the compiler cannot determine which constructor to call when a single String is passed.
+
+Section 9:
+The system is designed with a constant MAX_NUMBERS_ORDERED = 20. 
+In the addDigitalVideoDisc method, we implement a check: if (qtyOrdered < MAX_NUMBERS_ORDERED). 
+If the cart is already full (20 items), the system will not add the new disc and instead notifies the user with the message: "The cart is almost full". 
