@@ -1,0 +1,9 @@
+1. Parameter Passing (Section 3)
+- Java is always Pass by Value.
+- The swap() method fails because it only swaps the copies of the references, not the original objects.
+- The changeTitle() method succeeds because it uses the copy of the reference to access and modify the actual object's internal data in the memory.
+
+2. String, StringBuilder and StringBuffer (Section 9)
+- Time with + operator: 480 ms
+- Time with StringBuilder: 5 ms
+- Explanation: String is immutable in Java. Using the '+' operator in a loop creates many intermediate String objects (garbage), which is slow and memory-intensive. StringBuilder is mutable and modifies the same memory buffer, making it much faster.
