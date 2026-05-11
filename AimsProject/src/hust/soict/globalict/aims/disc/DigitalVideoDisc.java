@@ -39,6 +39,9 @@ public class DigitalVideoDisc {
     public void setCost(float cost) {
         this.cost = cost;
     }
+    public int getId() {
+        return id;
+    }
     public DigitalVideoDisc(String title) {
         this.title = title;
         nbDigitalVideoDiscs++;
