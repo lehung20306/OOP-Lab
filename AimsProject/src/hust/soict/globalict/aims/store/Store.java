@@ -1,41 +1,55 @@
 package hust.soict.globalict.aims.store;
-import hust.soict.globalict.aims.disc.DigitalVideoDisc;
+import hust.soict.globalict.aims.media.Media;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Store {
-    public static final int MAX_NUMBERS_ITEM = 100;
-    private DigitalVideoDisc itemsInStore[] = new DigitalVideoDisc[MAX_NUMBERS_ITEM];
-    private int qtyInStore = 0;
-    public void addDVD (DigitalVideoDisc disc) {
-        if (qtyInStore < MAX_NUMBERS_ITEM) {
-            itemsInStore[qtyInStore] = disc;
-            qtyInStore++;
-            System.out.println("The disc has been added"); // Thông báo khi thêm thành công 
+    private List<Media> itemsInStore = new ArrayList<Media>();
+    
+    public void print() {
+        System.out.println("***********************CART***********************");
+        System.out.println("Items:");
+        for (int i = 0; i < itemsInStore.size(); i++) {
+            System.out.println((i + 1) + ". " + itemsInStore.get(i).toString());
+        }
+        System.out.println("***************************************************");
+    }
+    
+    public void addMedia(Media item) {
+        if (itemsInStore.contains(item)) {
+            System.out.println("The item " + item.getTitle() + " is already in the store.");
         } 
         else {
-            System.out.println("The store is almost full"); // Thông báo cửa hàng hết chỗ 
+            itemsInStore.add(item);
+            System.out.println("The item " + item.getTitle() + " has been added.");
         }
     }
-    public void addDVD(DigitalVideoDisc[] dvdList) {
-    for (DigitalVideoDisc dvd : dvdList) {
-            this.addDVD(dvd);
+
+    public void addMedia(Media[] itemList) {
+    for (Media item : itemList) {
+            this.addMedia(item);
         }
     }
-    public void addDVD(DigitalVideoDisc dvd1, DigitalVideoDisc dvd2) {
-        this.addDVD(dvd1);
-        this.addDVD(dvd2);
+
+    public void addMedia(Media item1, Media item2) {
+        this.addMedia(item1);
+        this.addMedia(item2);
     }
-    public void removeDVD(DigitalVideoDisc disc) {
-        for (int i = 0; i < qtyInStore; i++) {
-            if (itemsInStore[i] == disc) {
-                for (int j = i; j < qtyInStore - 1; j++) {
-                    itemsInStore[j] = itemsInStore[j + 1];
-                }
-                itemsInStore[qtyInStore - 1] = null;
-                qtyInStore--;
-                System.out.println("The disc has been removed");
-                return;
+
+    public void removeMedia(Media item) {
+        if (itemsInStore.remove(item)) {
+            System.out.println("The item " + item.getTitle() + " has been removed");
+        } else {
+            System.out.println("The item is not in the store");
+        }
+    }
+
+    public Media searchByTitle(String title) {
+        for (Media item : itemsInStore) {
+            if (item.isMatch(title)) {
+                return item;
             }
         }
-        System.out.println("The disc is not in the store");
+        return null;
     }
 }

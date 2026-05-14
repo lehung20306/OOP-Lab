@@ -19,5 +19,6 @@ public class ConcatenationInLoops {
         }
         s = sb.toString();
         System.out.println("Time with StringBuilder: " + (System.currentTimeMillis() - start));
+        System.out.println(s.length());
     }
 }
